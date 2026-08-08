@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.upiresti'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.18.1'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.18.1'
+    // Selenium WebDriver
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.25.0'
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.11.0'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
