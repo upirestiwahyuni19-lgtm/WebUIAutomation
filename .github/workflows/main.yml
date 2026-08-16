@@ -3,12 +3,12 @@ name: Automation Test
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types:
       - closed
     branches:
-      - main
+      - master
 
 jobs:
   test:
