@@ -1,4 +1,4 @@
-package org.upiresti;
+package org.upiresti.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.upiresti.pages.LoginPage;
 
 public class LoginStep {
 
