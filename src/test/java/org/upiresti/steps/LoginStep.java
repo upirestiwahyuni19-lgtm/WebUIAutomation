@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.upiresti.pages.LoginPage;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class LoginStep {
 
@@ -18,8 +19,20 @@ public class LoginStep {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        ChromeOptions options = new ChromeOptions();
+
+        boolean isCI = System.getenv("GITHUB_ACTIONS") != null;
+
+        if (isCI) {
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
+
+        }
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new ChromeDriver(options);
 
         loginPage = new LoginPage(driver);
     }

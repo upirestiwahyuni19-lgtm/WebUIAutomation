@@ -17,14 +17,8 @@ public class LoginPage {
 
     // Constructor
     public LoginPage(WebDriver driver) {
-        ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--headless=new");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--window-size=1920,1080");
-
-        this.driver = new ChromeDriver(options);
+        this.driver = driver;
 
         this.driver.get("https://www.saucedemo.com/");
     }
