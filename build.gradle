@@ -50,6 +50,7 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+
 tasks.register('apiTest', Test) {
     description = 'Execute Cucumber tests with @api tag'
     group = 'verification'
@@ -76,4 +77,17 @@ tasks.register('webTest', Test) {
     filter {
         includeTestsMatching 'org.upiresti.WebTestRunner'
     }
+}
+
+webTest.mustRunAfter(apiTest)
+
+tasks.register('automationTest') {
+    description = 'Execute API and Web automation tests'
+    group = 'verification'
+
+    dependsOn apiTest, webTest
+}
+
+tasks.named('allureReport') {
+    dependsOn automationTest
 }

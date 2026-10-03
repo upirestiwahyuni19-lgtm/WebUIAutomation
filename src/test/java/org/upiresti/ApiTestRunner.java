@@ -22,7 +22,7 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 )
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:build/reports/cucumber/api-report.html, json:build/reports/cucumber/api-report.json"
+        value = "pretty, html:build/reports/cucumber/api-report.html, json:build/reports/cucumber/api-report.json, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 )
 public class ApiTestRunner {
 }

@@ -1,6 +1,6 @@
-Feature: Login API
+Feature: Authentication
 
-  @api @smoke @allure.label.epic:API_Automation @allure.label.feature:Authentication
+  @api @smoke @allure.label.epic:API_Automation
   Scenario: Register kemudian login menggunakan akun baru
     Given user baru melakukan register
     When user melakukan register melalui API
@@ -9,7 +9,7 @@ Feature: Login API
     Then login berhasil dengan status code 200
     And response success bernilai true
 
-  @api @smoke @allure.label.epic:API_Automation @allure.label.feature:Authentication
+  @api @smoke @allure.label.epic:API_Automation
   Scenario: Register kemudian login dan logout menggunakan akun baru
     Given user baru melakukan register
     When user melakukan register melalui API
@@ -20,7 +20,7 @@ Feature: Login API
     When user melakukan logout melalui API
     Then logout berhasil dengan status code 200
 
-  @api @allure.label.epic:API_Automation @allure.label.feature:Authentication
+  @api @allure.label.epic:API_Automation
   Scenario: Login menggunakan password yang salah
     Given user baru melakukan register
     When user melakukan register melalui API
