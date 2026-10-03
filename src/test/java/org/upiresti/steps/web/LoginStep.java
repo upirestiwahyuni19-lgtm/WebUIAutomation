@@ -1,4 +1,4 @@
-package org.upiresti.steps;
+package org.upiresti.steps.web;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

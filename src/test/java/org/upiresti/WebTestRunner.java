@@ -7,17 +7,22 @@ import org.junit.platform.suite.api.Suite;
 
 import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("features")
+@SelectClasspathResource("features/web")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
         value = "org.upiresti"
 )
 @ConfigurationParameter(
-        key = PLUGIN_PROPERTY_NAME,
-        value = "pretty, html:build/reports/cucumber.html, json:build/reports/cucumber.json, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+        key = FILTER_TAGS_PROPERTY_NAME,
+        value = "@web"
 )
-public class TestRunner {
+@ConfigurationParameter(
+        key = PLUGIN_PROPERTY_NAME,
+        value = "pretty, html:build/reports/cucumber-web.html, json:build/reports/cucumber-web.json, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+)
+public class WebTestRunner {
 }
