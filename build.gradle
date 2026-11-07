@@ -65,6 +65,7 @@ tasks.register('apiTest', Test) {
     }
 }
 
+
 tasks.register('webTest', Test) {
     description = 'Execute Cucumber tests with @web tag'
     group = 'verification'
@@ -77,7 +78,14 @@ tasks.register('webTest', Test) {
     filter {
         includeTestsMatching 'org.upiresti.WebTestRunner'
     }
+
+    testLogging {
+        showStandardStreams = true
+        events "started", "passed", "skipped", "failed"
+        exceptionFormat = 'full'
+    }
 }
+
 
 webTest.mustRunAfter(apiTest)
 

@@ -1,45 +1,34 @@
+
 package org.upiresti.steps.web;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.upiresti.pages.LoginPage;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.upiresti.support.DriverManager;
 
 public class LoginStep {
 
     private WebDriver driver;
     private LoginPage loginPage;
 
-    @Before
-    public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-
-        boolean isCI = System.getenv("GITHUB_ACTIONS") != null;
-
-        if (isCI) {
-            options.addArguments("--headless=new");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1920,1080");
-
-        }
-        options.addArguments("--window-size=1920,1080");
-
-        driver = new ChromeDriver(options);
-
-        loginPage = new LoginPage(driver);
-    }
-
     @Given("user berada di halaman login")
     public void userBeradaDiHalamanLogin() {
+
+        driver = DriverManager.getDriver();
+
+        loginPage = new LoginPage(driver);
+
         loginPage.openLoginPage();
+
+        System.out.println(
+                "LOGIN URL: " + driver.getCurrentUrl()
+        );
     }
 
     @When("user memasukkan username {string}")
@@ -59,6 +48,7 @@ public class LoginStep {
 
     @Then("user berhasil login")
     public void userBerhasilLogin() {
+
         Assertions.assertTrue(
                 loginPage.isLoginSuccessful(),
                 "User gagal login"
@@ -67,6 +57,7 @@ public class LoginStep {
 
     @Then("muncul pesan error login")
     public void munculPesanErrorLogin() {
+
         String errorMessage = loginPage.getErrorMessage();
 
         Assertions.assertFalse(
@@ -75,12 +66,5 @@ public class LoginStep {
         );
 
         System.out.println("Error: " + errorMessage);
-    }
-
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

@@ -1,3 +1,4 @@
+
 package org.upiresti;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
@@ -12,17 +13,21 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features/web")
+
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
         value = "org.upiresti"
 )
+
 @ConfigurationParameter(
         key = FILTER_TAGS_PROPERTY_NAME,
         value = "@web"
 )
+
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
         value = "pretty, html:build/reports/cucumber-web.html, json:build/reports/cucumber-web.json, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 )
+
 public class WebTestRunner {
 }
